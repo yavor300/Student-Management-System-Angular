@@ -1,0 +1,47 @@
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {environment} from "../../environments/environment";
+import {UserLogin} from "../_models/UserLogin";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  private baseUrl = environment.apiUrl;
+  private TOKEN_KEY: string = 'authToken';
+
+  constructor(private httpClient: HttpClient) { }
+
+  public login(userLoginModel: UserLogin): Observable<void> {
+    return this.httpClient.post(this.baseUrl + '/public/login', userLoginModel).pipe(
+      map((response: any) => {
+        this.saveToken(response.jwt);
+      }, (error: HttpErrorResponse) => {
+        alert(error.error.errors.join('\n'));
+      })
+    )
+  }
+
+  public getToken(): string | null {
+    return sessionStorage.getItem(this.TOKEN_KEY);
+  }
+
+  public getUsername(): string {
+    const token = this.getToken() || '';
+    return JSON.parse(atob(token.split('')[1])).sub.split(',')[0];
+  }
+
+  public getRole(): string {
+    const token = this.getToken() || '';
+    return JSON.parse(atob(token.split('.')[1])).sub.split(',')[1];
+  }
+
+  private saveToken(jwt: string): void {
+    sessionStorage.removeItem(this.TOKEN_KEY);
+    sessionStorage.setItem(this.TOKEN_KEY, jwt);
+  }
+
+
+}
