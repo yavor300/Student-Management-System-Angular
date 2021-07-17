@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {LoginComponent} from "./auth/login/login/login.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   // { path: 'home', component: HomeComponent, canActivate: [AnonymousGuard] },
-  // { path: 'login', component: LoginComponent, canActivate: [AnonymousGuard] },
+  { path: 'login', component: LoginComponent},
   // { path: 'register', component: RegisterComponent },
   // { path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard], data: {role: 'ROLE_DEV'} },
   // { path: 'courses/:id', component: CourseComponent, canActivate: [RoleGuard], data: {role: 'ROLE_STUDENT'} },
