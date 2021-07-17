@@ -26,22 +26,30 @@ export class UserService {
     )
   }
 
-  public getToken(): string | null {
+  private getToken(): string | null {
     return sessionStorage.getItem(this.TOKEN_KEY);
   }
 
   public getUsername(): string {
     const token = this.getToken() || '';
-    return JSON.parse(atob(token.split('')[1])).sub.split(',')[0];
+    return JSON.parse(atob(token.split('')[1])).sub;
   }
 
-  public getRole(): string {
+  public getRoles(): string {
     const token = this.getToken() || '';
-    return JSON.parse(atob(token.split('.')[1])).sub.split(',')[1];
+    return JSON.parse(atob(token.split('.')[1])).roles;
   }
 
   private saveToken(jwt: string): void {
     sessionStorage.removeItem(this.TOKEN_KEY);
     sessionStorage.setItem(this.TOKEN_KEY, jwt);
+  }
+
+  public logout(): void {
+    sessionStorage.clear();
+  }
+
+  public isLoggedIn(): boolean {
+    return !!this.getToken();
   }
 }
