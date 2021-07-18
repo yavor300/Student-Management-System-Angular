@@ -26,7 +26,7 @@ export class UserService {
     )
   }
 
-  private getToken(): string | null {
+  getToken(): string | null {
     return sessionStorage.getItem(this.TOKEN_KEY);
   }
 
