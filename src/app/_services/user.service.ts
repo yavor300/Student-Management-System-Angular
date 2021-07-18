@@ -14,8 +14,6 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // TODO Identify whether the methods must be public or private
-
   public login(userLoginModel: UserLogin): Observable<void> {
     return this.httpClient.post(this.baseUrl + '/public/login', userLoginModel).pipe(
       map((response: any) => {
@@ -26,13 +24,13 @@ export class UserService {
     )
   }
 
-  getToken(): string | null {
+  public getToken(): string | null {
     return sessionStorage.getItem(this.TOKEN_KEY);
   }
 
   public getUsername(): string {
     const token = this.getToken() || '';
-    return JSON.parse(atob(token.split('')[1])).sub;
+    return JSON.parse(atob(token.split('.')[1])).sub;
   }
 
   public getRoles(): string {
