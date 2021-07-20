@@ -3,12 +3,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from "./auth/login/login.component";
 import {HomeComponent} from "./dashboard/home/home.component";
 import {AnonymousGuard} from "./_guards/anonymous.guard";
+import {RegisterComponent} from "./auth/register/register.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent, canActivate: [AnonymousGuard]},
   {path: 'login', component: LoginComponent, canActivate: [AnonymousGuard]},
-  // { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterComponent },
   // { path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard], data: {role: 'ROLE_DEV'} },
   // { path: 'courses/:id', component: CourseComponent, canActivate: [RoleGuard], data: {role: 'ROLE_STUDENT'} },
   // { path: 'admin', component: AdminComponent, canActivate: [RoleGuard], data: {role: 'ROLE_ADMIN'} },

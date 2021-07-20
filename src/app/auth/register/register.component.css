@@ -1,0 +1,15 @@
+.radio-group {
+  display: inline;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.radio-button {
+  margin: 5px;
+}
+
+mat-form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}

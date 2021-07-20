@@ -1,1 +1,99 @@
-<p>register works!</p>
+<div class="container w-25">
+  <h4 class="text-center mt-5 mb-5">Register</h4>
+  <mat-radio-group class="radio-group" [(ngModel)]="role" (change)="updateForm()">
+    <mat-radio-button class="radio-button mr-5" value="student">
+      Student
+    </mat-radio-button>
+    <mat-radio-button class="radio-button" value="teacher">
+      Teacher
+    </mat-radio-button>
+  </mat-radio-group>
+  <div class="mt-2">
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmitButtonClicked()"
+      class="text-center"
+    >
+      <mat-form-field>
+        <mat-label for="username">Username</mat-label>
+        <input
+          matInput
+          formControlName="username"
+          name="username"
+          type="text"
+        />
+        <mat-error *ngIf="registerForm.hasError('required', 'username')">
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="uniqueCitizenNumber">Unique Citizen Number</mat-label>
+        <input
+          matInput
+          formControlName="uniqueCitizenNumber"
+          name="uniqueCitizenNumber"
+          type="text"
+        />
+
+        <mat-error *ngIf="registerForm.hasError('required', 'uniqueCitizenNumber')">
+          Username is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="registerForm.hasError('minlength', 'uniqueCitizenNumber')">
+          Unique Citizen Number must be <strong>10 characters</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="password">Password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          name="password"
+          type="password"
+        />
+        <mat-error *ngIf="registerForm.hasError('required', 'password')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="name">Name</mat-label>
+        <input matInput formControlName="name" name="name" type="text"/>
+        <mat-error *ngIf="registerForm.hasError('required', 'name')">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="role === 'student'">
+        <mat-label for="age">Age</mat-label>
+        <input matInput formControlName="age" name="age" type="number"/>
+        <mat-error *ngIf="registerForm.hasError('required', 'age')">
+          Age is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="role === 'teacher'">
+        <mat-label for="degree">Degree</mat-label>
+        <mat-select
+          formControlName="degree"
+          name="degree"
+          placeholder="Choose"
+        >
+          <mat-option value="BSC">BSc</mat-option>
+          <mat-option value="MSC">MSc</mat-option>
+          <mat-option value="PHD">PhD</mat-option>
+        </mat-select>
+        <mat-error *ngIf="registerForm.hasError('required', 'degree')">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button class="btn btn-success mt-3 pl-5 pr-5" type="submit">Register</button>
+      <div class="row mt-3 alert alert-danger" *ngIf="validationErrors">
+        <span class="text-danger">
+            {{validationErrors}}
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
