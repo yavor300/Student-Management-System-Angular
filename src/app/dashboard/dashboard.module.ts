@@ -4,15 +4,18 @@ import {HomeComponent} from './home/home.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
+import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    DashboardComponent
   ],
   exports: [
     NavbarComponent,
     HomeComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

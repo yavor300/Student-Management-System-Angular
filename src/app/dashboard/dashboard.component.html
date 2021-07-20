@@ -1,0 +1,6 @@
+<div class="text-center pt-5">
+  <h4 class="mb-5">User Dashboard</h4>
+  <div *ngIf="userService.getRoles().includes('ROLE_TEACHER') && !userService.getRoles().includes('ROLE_ADMIN')">
+
+  </div>
+</div>
