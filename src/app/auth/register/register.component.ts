@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/_services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {UserService} from 'src/app/_services/user.service';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,8 @@ export class RegisterComponent implements OnInit {
   role: string = 'student';
   validationErrors: string = '';
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService) {
+  }
 
   ngOnInit(): void {
     this.registerForm = this.generateRegistrationForm();
@@ -26,7 +28,8 @@ export class RegisterComponent implements OnInit {
 
     let uniqueCitizenNumber = this.formBuilder.control(null, [
       Validators.required,
-      Validators.minLength(10)
+      Validators.minLength(10),
+      Validators.maxLength(10)
     ]);
 
     let passwordFormControl = this.formBuilder.control(null, [
@@ -38,14 +41,15 @@ export class RegisterComponent implements OnInit {
     ]);
 
     let ageFormControl = this.formBuilder.control(null, [
-      Validators.required
+      Validators.required,
+      Validators.min(16)
     ]);
 
     let degreeFormControl = this.formBuilder.control(null, [
       Validators.required
     ]);
 
-    if(this.role === 'student') {
+    if (this.role === 'student') {
       return this.formBuilder.group({
         username: usernameFormControl,
         uniqueCitizenNumber: uniqueCitizenNumber,
@@ -69,6 +73,24 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmitButtonClicked() {
+    if (this.registerForm.valid) {
+      let registration$: Observable<any>;
+      if (this.role === 'student') {
+        registration$ = this.userService.registerStudent(this.registerForm.value);
+      } else {
+        registration$ = this.userService.registerTeacher(this.registerForm.value);
+      }
 
+      registration$.subscribe(
+        () => {
+          this.router.navigateByUrl('/login');
+        }, error => {
+          this.validationErrors = error.error.errors.join('\n');
+        }
+      )
+
+    } else {
+      this.registerForm.markAllAsTouched();
+    }
   }
 }

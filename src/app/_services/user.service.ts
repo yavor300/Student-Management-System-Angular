@@ -4,6 +4,9 @@ import {environment} from "../../environments/environment";
 import {UserLogin} from "../_models/UserLogin";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {TeacherRegister} from "../_models/TeacherRegister";
+import {TeacherRegisterResult} from "../_models/TeacherRegisterResult";
+import {StudentRegister} from "../_models/StudentRegister";
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +52,13 @@ export class UserService {
 
   public isLoggedIn(): boolean {
     return !!this.getToken();
+  }
+
+  registerTeacher(model: TeacherRegister): Observable<any> {
+    return this.httpClient.post(this.baseUrl + '/public/register/teacher', model);
+  }
+
+  registerStudent(model: StudentRegister): Observable<any> {
+    return this.httpClient.post(this.baseUrl + '/public/register/student', model);
   }
 }
