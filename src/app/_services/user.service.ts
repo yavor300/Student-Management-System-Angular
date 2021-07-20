@@ -5,7 +5,6 @@ import {UserLogin} from "../_models/UserLogin";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {TeacherRegister} from "../_models/TeacherRegister";
-import {TeacherRegisterResult} from "../_models/TeacherRegisterResult";
 import {StudentRegister} from "../_models/StudentRegister";
 
 @Injectable({

@@ -5,6 +5,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
 import { DashboardComponent } from './dashboard.component';
+import {TeacherModule} from "../teacher/teacher.module";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DashboardComponent } from './dashboard.component';
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    TeacherModule
   ],
 })
 
