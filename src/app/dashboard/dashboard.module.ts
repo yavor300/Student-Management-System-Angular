@@ -7,6 +7,7 @@ import {SharedModule} from "../shared/shared.module";
 import { DashboardComponent } from './dashboard.component';
 import {TeacherModule} from "../teacher/teacher.module";
 import {StudentModule} from "../student/student.module";
+import {CourseModule} from "../course/course.module";
 
 @NgModule({
   declarations: [
@@ -19,13 +20,14 @@ import {StudentModule} from "../student/student.module";
     HomeComponent,
     DashboardComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    SharedModule,
-    TeacherModule,
-    StudentModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        SharedModule,
+        TeacherModule,
+        StudentModule,
+        CourseModule
+    ],
 })
 
 export class DashboardModule {

@@ -4,22 +4,27 @@ import { FilterComponent } from './filter/filter.component';
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {FilterPipe} from "./filter.pipe";
+import { CourseComponent } from './course/course.component';
+import { CoursesComponent } from './courses/courses.component';
 
 
 
 @NgModule({
   declarations: [
     FilterComponent,
-    FilterPipe
+    FilterPipe,
+    CourseComponent,
+    CoursesComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     FilterComponent,
-    FilterPipe
+    FilterPipe,
+    CoursesComponent
   ]
 })
 export class CourseModule { }
