@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TeachersCoursesComponent } from './teachers-courses/teachers-courses.component';
 import {SharedModule} from "../shared/shared.module";
 import {RouterModule} from "@angular/router";
+import {CourseModule} from "../course/course.module";
 
 
 
@@ -16,7 +17,8 @@ import {RouterModule} from "@angular/router";
     imports: [
       CommonModule,
       SharedModule,
-      RouterModule
+      RouterModule,
+      CourseModule
     ]
 })
 export class TeacherModule { }

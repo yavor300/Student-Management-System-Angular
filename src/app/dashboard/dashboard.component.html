@@ -3,4 +3,7 @@
   <div *ngIf="userService.getRoles().includes('ROLE_TEACHER') && !userService.getRoles().includes('ROLE_ADMIN')">
     <app-teachers-courses></app-teachers-courses>
   </div>
+  <div *ngIf="!userService.getRoles().includes('ROLE_TEACHER') && !userService.getRoles().includes('ROLE_ADMIN')">
+    <app-average-grade></app-average-grade>
+  </div>
 </div>

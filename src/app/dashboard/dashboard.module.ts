@@ -6,6 +6,7 @@ import {RouterModule} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
 import { DashboardComponent } from './dashboard.component';
 import {TeacherModule} from "../teacher/teacher.module";
+import {StudentModule} from "../student/student.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {TeacherModule} from "../teacher/teacher.module";
     CommonModule,
     RouterModule,
     SharedModule,
-    TeacherModule
+    TeacherModule,
+    StudentModule
   ],
 })
 
