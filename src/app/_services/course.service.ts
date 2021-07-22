@@ -20,4 +20,17 @@ export class CourseService {
       })
     );
   }
+
+  public getAllSorted(): Observable<Course[]> {
+    return this.httpClient.get<Course[]>(this.baseUrl + '/course/all/ordered')
+      .pipe(
+        map((response: Course[]) => {
+          return response;
+        })
+      );
+  }
+
+  public getAll(): Observable<Course[]> {
+    return this.httpClient.get<Course[]>(this.baseUrl + '/course/all');
+  }
 }

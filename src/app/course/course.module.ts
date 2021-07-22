@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {FilterPipe} from "./filter.pipe";
 import { CourseComponent } from './course/course.component';
 import { CoursesComponent } from './courses/courses.component';
+import {StudentModule} from "../student/student.module";
 
 
 
@@ -16,11 +17,12 @@ import { CoursesComponent } from './courses/courses.component';
     CourseComponent,
     CoursesComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        StudentModule,
+    ],
   exports: [
     FilterComponent,
     FilterPipe,

@@ -1,10 +1,8 @@
-import { Teacher } from "./Teacher";
-
 export interface Course {
   id: number,
   name: string,
   totalHours: number,
-  teacher?: Teacher;
+  teacherName?: string;
   studentGrades: {
     [name: string]: number
   },
