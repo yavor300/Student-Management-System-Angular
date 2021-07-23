@@ -33,4 +33,8 @@ export class CourseService {
   public getAll(): Observable<Course[]> {
     return this.httpClient.get<Course[]>(this.baseUrl + '/course/all');
   }
+
+  public getByName(name: string): Observable<Course> {
+    return this.httpClient.get<Course>(this.baseUrl + '/course/average/' + name);
+  }
 }

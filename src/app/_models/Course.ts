@@ -6,5 +6,6 @@ export interface Course {
   studentGrades: {
     [name: string]: number
   },
-  averageGrade?: number
+  students: {studentName: string,gradeValue: number}[],
+  averageGrade: number
 }

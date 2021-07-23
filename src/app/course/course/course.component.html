@@ -1,1 +1,41 @@
-<p>course works!</p>
+<div class="container mt-5" *ngIf="course">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="mb-3">{{ course.name }}</mat-card-title>
+      <mat-card-subtitle>ID: {{ course.id }}</mat-card-subtitle>
+      <mat-card-subtitle>Total hours: {{ course.totalHours }}</mat-card-subtitle>
+      <mat-card-subtitle>Teacher: {{ course.teacherName ? course.teacherName : 'None' }}
+        <span class="plus-teacher ml-2" *ngIf="userService.getRoles().includes('ROLE_ADMIN') && !course.teacherName" (click)="openAddTeacherDialog()">
+        <i class="fa fa-plus pointer"></i>
+      </span>
+        <span class="trash ml-1 mt-5" *ngIf="userService.getRoles().includes('ROLE_ADMIN') && course.teacherName" (click)="removeTeacher()">
+        <i class="fa fa-trash pointer fa-1-5x"></i>
+      </span>
+      </mat-card-subtitle>
+      <mat-card-subtitle *ngIf="userService.getRoles().includes('ROLE_TEACHER')">Average grade: {{ (course.averageGrade | grade) || 'None' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <app-filter (eventEmitter)="searchValue=$event"></app-filter>
+      <span *ngIf="userService.getRoles().includes('ROLE_TEACHER')" (click)="openAddStudentDialog()">
+        <button class="btn btn-primary float-right mb-2">Add Student</button>
+      </span>
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Student</th>
+          <th scope="col" *ngIf="userService.getRoles().includes('ROLE_TEACHER')">Average Grade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="" *ngFor="let student of course.students">
+          <td class="pointer" [routerLink]="'/profile/student/' + student.studentName">{{ student.studentName }}</td>
+          <td *ngIf="userService.getRoles().includes('ROLE_TEACHER')">{{(student.gradeValue | grade) || 'None'}}
+            <span class="plus  ml-2" (click)="openAddGradeDialog(student.studentName)">
+          <i class="fa fa-plus pointer fa-1-5x"></i>
+        </span></td>
+        </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

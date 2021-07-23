@@ -7,6 +7,7 @@ import {FilterPipe} from "./filter.pipe";
 import { CourseComponent } from './course/course.component';
 import { CoursesComponent } from './courses/courses.component';
 import {StudentModule} from "../student/student.module";
+import {SharedModule} from "../shared/shared.module";
 
 
 
@@ -22,6 +23,7 @@ import {StudentModule} from "../student/student.module";
         RouterModule,
         FormsModule,
         StudentModule,
+        SharedModule
     ],
   exports: [
     FilterComponent,

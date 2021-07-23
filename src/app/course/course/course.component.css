@@ -1,0 +1,30 @@
+.trash i {
+  vertical-align: center;
+  color: rgb(13, 13, 119);
+}
+
+.trash i:hover {
+  color: red;
+}
+
+.plus i {
+  vertical-align: middle;
+  color: rgb(13, 13, 119);
+}
+
+.plus i:hover {
+  color: rgb(58, 216, 58);
+}
+
+.mat-card-subtitle, .mat-card-content {
+  font-size: 16px;
+}
+
+.plus-teacher i {
+  vertical-align: center;
+  color: rgb(13, 13, 119);
+}
+
+.plus-teacher i:hover {
+  color: rgb(58, 216, 58);
+}
