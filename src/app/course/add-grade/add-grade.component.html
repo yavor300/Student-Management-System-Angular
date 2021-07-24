@@ -1,0 +1,33 @@
+<div class="pl-5 pr-5 pb-5 pt-3">
+  <h4 class="text-center mt-1 mb-5">Add Grade for {{ student?.name }}</h4>
+  <div class="">
+    <form
+      [formGroup]="addGradeForm"
+      (ngSubmit)="onSubmitButtonClicked()"
+      class="text-center"
+    >
+      <mat-form-field class="mb-2 mr-4">
+        <mat-label for="grade">Grade</mat-label>
+        <input
+          matInput
+          formControlName="grade"
+          name="grade"
+          type="number"
+          step=0.1
+        />
+        <mat-error *ngIf="addGradeForm.hasError('required', 'grade')">
+          Grade is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="addGradeForm.hasError('min', 'grade') || addGradeForm.hasError('max', 'grade')">
+          Grade must be between <strong>2.0</strong> and <strong>6.0</strong>
+        </mat-error>
+      </mat-form-field>
+      <button class="btn btn-primary pl-4 pr-4" type="submit">Add</button>
+      <div class="row mt-3 alert alert-danger" *ngIf="validationErrors">
+    <span class="text-danger">
+        {{validationErrors}}
+    </span>
+      </div>
+    </form>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import {UserService} from "../../_services/user.service";
 import {GradeService} from "../../_services/grade.service";
 import {AddTeacherComponent} from "../add-teacher/add-teacher.component";
 import {AddStudentComponent} from "../add-student/add-student.component";
+import {AddGradeComponent} from "../add-grade/add-grade.component";
 
 @Component({
   selector: 'app-course',
@@ -59,7 +60,16 @@ export class CourseComponent implements OnInit {
     )
   }
 
-  openAddGradeDialog(key: string | number | string | Date | ArrayBufferView | ArrayBuffer | IDBArrayKey | ((index: number) => (string | null))) {
+  public openAddGradeDialog(studentId: number) {
+    const dialogRef = this.matDialog.open(AddGradeComponent, {
+      autoFocus: false,
+      data: {
+        course: this.course,
+        studentId: studentId
+      }
+    });
 
+    dialogRef.afterClosed()
+      .subscribe(() => this.loadCourse());
   }
 }
