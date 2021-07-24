@@ -9,6 +9,7 @@ import { CoursesComponent } from './courses/courses.component';
 import {StudentModule} from "../student/student.module";
 import {SharedModule} from "../shared/shared.module";
 import { AddTeacherComponent } from './add-teacher/add-teacher.component';
+import { AddStudentComponent } from './add-student/add-student.component';
 
 
 
@@ -18,7 +19,8 @@ import { AddTeacherComponent } from './add-teacher/add-teacher.component';
     FilterPipe,
     CourseComponent,
     CoursesComponent,
-    AddTeacherComponent
+    AddTeacherComponent,
+    AddStudentComponent
   ],
     imports: [
         CommonModule,

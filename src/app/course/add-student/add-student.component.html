@@ -1,0 +1,32 @@
+<div class="pl-5 pr-5 pb-5 pt-3">
+  <h4 class="text-center mt-1 mb-5">Add Student to {{ course?.name }}</h4>
+  <div class="">
+    <form
+      [formGroup]="addStudentForm"
+      (ngSubmit)="onSubmitButtonClicked()"
+      class="text-center"
+    >
+      <mat-form-field class="mb-2 mr-4">
+        <mat-label for="student">Student</mat-label>
+        <mat-select id="studentid"
+                    formControlName="student"
+                    name="student"
+                    placeholder="Choose"
+        >
+          <mat-option *ngFor="let student of students" value="{{ student?.id }}">{{ student?.name }}, {{ student?.id }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="addStudentForm.hasError('required', 'student')">
+          Student is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <button class="btn btn-primary pl-3 pr-3" type="submit">Add</button>
+      <div class="row mt-3 alert alert-danger" *ngIf="validationErrors">
+        <span class="text-danger">
+            {{validationErrors}}
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+
