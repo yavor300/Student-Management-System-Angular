@@ -1,3 +1,5 @@
+import {StudentWithAverageGrade} from "./StudentWithAverageGrade";
+
 export interface Course {
   id: number,
   name: string,
@@ -6,6 +8,6 @@ export interface Course {
   studentGrades: {
     [name: string]: number
   },
-  students: {studentName: string,gradeValue: number}[],
+  students: StudentWithAverageGrade[],
   averageGrade: number
 }

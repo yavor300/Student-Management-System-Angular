@@ -37,4 +37,8 @@ export class CourseService {
   public getByName(name: string): Observable<Course> {
     return this.httpClient.get<Course>(this.baseUrl + '/course/average/' + name);
   }
+
+  public assignTeacherToCourse(courseName:string, teacherId: number) {
+    return this.httpClient.post(this.baseUrl + '/course/add/teacher', {courseName, teacherId});
+  }
 }

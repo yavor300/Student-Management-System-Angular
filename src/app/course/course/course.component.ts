@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {CourseService} from "../../_services/course.service";
 import {UserService} from "../../_services/user.service";
 import {GradeService} from "../../_services/grade.service";
+import {AddTeacherComponent} from "../add-teacher/add-teacher.component";
 
 @Component({
   selector: 'app-course',
@@ -27,11 +28,19 @@ export class CourseComponent implements OnInit {
       .subscribe(course => this.course = course);
   }
 
-  openAddTeacherDialog() {
+  public openAddTeacherDialog(): void {
+    const  dialogRef = this.matDialog.open(AddTeacherComponent, {
+      autoFocus: false,
+      data: {
+        course: this.course
+      }
+    });
 
+    dialogRef.afterClosed()
+      .subscribe(response => this.loadCourse());
   }
 
-  removeTeacher() {
+  public removeTeacher() {
 
   }
 
