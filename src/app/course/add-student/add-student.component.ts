@@ -4,9 +4,7 @@ import {Student} from "../../_models/Student";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CourseService} from "../../_services/course.service";
-
-class StudentService {
-}
+import {StudentService} from "../../_services/student.service";
 
 @Component({
   selector: 'app-add-student',
@@ -26,6 +24,9 @@ export class AddStudentComponent implements OnInit {
               public dialogRef: MatDialogRef<AddStudentComponent>) { }
 
   ngOnInit(): void {
+    this.course = this.data.course;
+    this.studentService.getStudentsNotInCourse(this.course.name)
+      .subscribe(students => this.students = students);
+    //TODO ADD STUDENT FORM
   }
-
 }
