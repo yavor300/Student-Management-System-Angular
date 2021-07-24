@@ -14,4 +14,8 @@ export class StudentService {
   public getStudentsNotInCourse(courseName: string) {
     return this.httpClient.post<Student[]>(this.baseUrl + '/student/available', {courseName});
   }
+
+  public getStudentById(studentId: number) {
+    return this.httpClient.get<Student>(this.baseUrl + '/student/get/' + studentId);
+  }
 }

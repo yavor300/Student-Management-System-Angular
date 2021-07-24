@@ -49,4 +49,6 @@ export class CourseService {
   public enrollStudentToCourse(courseName: string, studentId: number) {
     return this.httpClient.post(this.baseUrl + '/student/add/course', {studentId, courseName});
   }
+
+
 }

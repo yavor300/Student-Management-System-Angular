@@ -19,4 +19,8 @@ export class GradeService {
       })
     );
   }
+
+  public addGrade(value:number, studentId: number, courseName: string) {
+    return this.httpClient.post(this.baseUrl + '/grade/add', {value, studentId, courseName});
+  }
 }
