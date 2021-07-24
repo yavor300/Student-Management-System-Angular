@@ -13,7 +13,7 @@ export class CourseService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllForLoggedInTeacher(): Observable<Course[]> {
+  public getAllForLoggedInTeacher(): Observable<Course[]> {
     return this.httpClient.get<Course[]>(this.baseUrl + '/teacher/courses/all').pipe(
       map((response: Course[]) => {
         return response;
@@ -40,5 +40,9 @@ export class CourseService {
 
   public assignTeacherToCourse(courseName:string, teacherId: number) {
     return this.httpClient.post(this.baseUrl + '/course/add/teacher', {courseName, teacherId});
+  }
+
+  public removeTeacherFromCourse(courseName: string) {
+    return this.httpClient.post(this.baseUrl + '/course/delete/teacher', {courseName});
   }
 }

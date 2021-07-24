@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Course} from "../../_models/Course";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute} from "@angular/router";
@@ -16,20 +16,21 @@ export class CourseComponent implements OnInit {
   public course!: Course;
   public searchValue: string = '';
 
-  constructor(public matDialog: MatDialog, private route: ActivatedRoute, private courseService: CourseService, public userService: UserService, private gradeService: GradeService) { }
+  constructor(public matDialog: MatDialog, private route: ActivatedRoute, private courseService: CourseService, public userService: UserService, private gradeService: GradeService) {
+  }
 
   ngOnInit(): void {
     this.loadCourse();
   }
 
-  private loadCourse() {
+  private loadCourse(): void {
     const courseName = this.route.snapshot.paramMap.get('name') || '';
     this.courseService.getByName(courseName)
       .subscribe(course => this.course = course);
   }
 
   public openAddTeacherDialog(): void {
-    const  dialogRef = this.matDialog.open(AddTeacherComponent, {
+    const dialogRef = this.matDialog.open(AddTeacherComponent, {
       autoFocus: false,
       data: {
         course: this.course
@@ -37,14 +38,15 @@ export class CourseComponent implements OnInit {
     });
 
     dialogRef.afterClosed()
-      .subscribe(response => this.loadCourse());
+      .subscribe(() => this.loadCourse());
   }
 
-  public removeTeacher() {
-
+  public removeTeacher(): void {
+    this.courseService.removeTeacherFromCourse(this.course.name)
+      .subscribe(() => this.course.teacherName = undefined);
   }
 
-  openAddStudentDialog() {
+  public openAddStudentDialog(): void {
 
   }
 
