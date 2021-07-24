@@ -45,4 +45,8 @@ export class CourseService {
   public removeTeacherFromCourse(courseName: string) {
     return this.httpClient.post(this.baseUrl + '/course/delete/teacher', {courseName});
   }
+
+  public enrollStudentToCourse(courseName: string, studentId: number) {
+    return this.httpClient.post(this.baseUrl + '/student/add/course', {studentId, courseName});
+  }
 }
