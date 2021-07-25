@@ -75,4 +75,8 @@ export class UserService {
       return 'Admin';
     }
   }
+
+  public changeRole(username: string, role: string) {
+    return this.httpClient.post(this.baseUrl + '/role/change', {username, role});
+  }
 }

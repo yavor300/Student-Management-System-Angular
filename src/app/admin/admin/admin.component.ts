@@ -43,7 +43,14 @@ export class AdminComponent implements OnInit {
 
   public onSubmitButtonClicked(): void {
     if (this.changeRoleForm.valid) {
-
+      this.userService.changeRole(this.changeRoleForm.controls['user'].value,
+        this.changeRoleForm.controls['role'].value)
+        .subscribe(user => {
+          if (user) {
+            this.message = "Role successfully changed.";
+            this.userService.getAll().subscribe(users => this.users = users);
+          }
+        }, error => this.validationErrors = error.error.errors.join('\n'));
     }
   }
 
