@@ -8,12 +8,14 @@ import { DashboardComponent } from './dashboard.component';
 import {TeacherModule} from "../teacher/teacher.module";
 import {StudentModule} from "../student/student.module";
 import {CourseModule} from "../course/course.module";
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfileComponent
   ],
   exports: [
     NavbarComponent,

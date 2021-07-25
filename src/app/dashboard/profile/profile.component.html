@@ -1,0 +1,39 @@
+<div class="text-center pt-5">
+  <h2 class="mb-5">My Profile</h2>
+  <div class="w-50 container-fluid mt-5">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Username</th>
+        <th scope="col">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="user">
+        <th scope="row">{{ user.id }}</th>
+        <td>{{ user.username }}</td>
+        <td>{{ user.name }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="text-center pt-5">
+  <h2 class="mb-5">Roles</h2>
+  <div class="w-50 container-fluid mt-5">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Type</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let role of userService.getRoles()">
+        <th scope="row">{{ role }}</th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

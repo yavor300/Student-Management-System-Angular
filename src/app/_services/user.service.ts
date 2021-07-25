@@ -79,4 +79,8 @@ export class UserService {
   public changeRole(username: string, role: string) {
     return this.httpClient.post(this.baseUrl + '/role/change', {username, role});
   }
+
+  public getLoggedInUser(username:string): Observable<User> {
+    return this.httpClient.post<User>(this.baseUrl + '/public/logged', {username});
+  }
 }
