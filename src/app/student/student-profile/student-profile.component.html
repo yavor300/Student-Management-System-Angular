@@ -1,0 +1,45 @@
+<div class="text-center pt-5">
+  <h2 class="mb-5">Student Profile</h2>
+  <div class="w-50 container-fluid mt-5">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="student">
+        <th scope="row">{{ student.id }}</th>
+        <td>{{ student.username }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.age }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="text-center pt-5">
+  <h2 class="mb-5">Courses Enrolled</h2>
+  <div class="w-50 container-fluid mt-5">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Total Hours</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="student" >
+      <tr *ngFor="let course of student.coursesEnrolled">
+        <th scope="row">{{ course.id }}</th>
+        <td>{{ course.name }}</td>
+        <td>{{ course.totalHours }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

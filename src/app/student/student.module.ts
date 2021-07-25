@@ -5,13 +5,15 @@ import {SharedModule} from "../shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {GradePipe} from "./average-grade/grade.pipe";
 import {StudentsFilterPipe} from "./student-filter.pipe";
+import { StudentProfileComponent } from './student-profile/student-profile.component';
 
 
 @NgModule({
   declarations: [
     AverageGradeComponent,
     GradePipe,
-    StudentsFilterPipe
+    StudentsFilterPipe,
+    StudentProfileComponent
   ],
   exports: [
     AverageGradeComponent,

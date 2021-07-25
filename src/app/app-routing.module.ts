@@ -8,6 +8,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {RoleGuard} from "./_guards/role.guard";
 import {CourseComponent} from "./course/course/course.component";
 import {AdminComponent} from "./admin/admin/admin.component";
+import {StudentProfileComponent} from "./student/student-profile/student-profile.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard], data: {role: 'ROLE_STUDENT'} },
   { path: 'courses/:name', component: CourseComponent, canActivate: [RoleGuard], data: {role: 'ROLE_STUDENT'} },
   { path: 'admin', component: AdminComponent, canActivate: [RoleGuard], data: {role: 'ROLE_ADMIN'} },
-  // { path: 'profile/student/:name', component: StudentProfileComponent, canActivate: [RoleGuard], data: {role: 'ROLE_DEV'} },
+  { path: 'profile/student/:id', component: StudentProfileComponent, canActivate: [RoleGuard], data: {role: 'ROLE_STUDENT'} },
   // { path: 'profile', component: ProfileComponent, canActivate: [RoleGuard], data: {role: 'ROLE_DEV'} }
 ];
 
