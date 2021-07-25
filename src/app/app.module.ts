@@ -6,8 +6,11 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthModule} from "./auth/auth.module";
 import {AppRoutingModule} from "./app-routing.module";
 import {DashboardModule} from "./dashboard/dashboard.module";
-import {RouterModule} from "@angular/router";
 import {JwtInterceptor} from "./_interceptors/jwt.interceptor";
+import {StudentModule} from "./student/student.module";
+import {TeacherModule} from "./teacher/teacher.module";
+import {CourseModule} from "./course/course.module";
+import {AdminModule} from "./admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -16,10 +19,13 @@ import {JwtInterceptor} from "./_interceptors/jwt.interceptor";
   imports: [
     BrowserModule,
     HttpClientModule,
+    StudentModule,
+    TeacherModule,
+    CourseModule,
     AuthModule,
-    AppRoutingModule,
     DashboardModule,
-    RouterModule
+    AdminModule,
+    AppRoutingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

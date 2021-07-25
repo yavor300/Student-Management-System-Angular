@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin/admin.component';
+import {SharedModule} from "../shared/shared.module";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -9,7 +11,9 @@ import { AdminComponent } from './admin/admin.component';
     AdminComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    RouterModule
   ]
 })
 export class AdminModule { }

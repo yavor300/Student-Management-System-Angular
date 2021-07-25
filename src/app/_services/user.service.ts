@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {TeacherRegister} from "../_models/TeacherRegister";
 import {StudentRegister} from "../_models/StudentRegister";
+import {User} from "../_models/User";
 
 @Injectable({
   providedIn: 'root'
@@ -53,11 +54,25 @@ export class UserService {
     return !!this.getToken();
   }
 
-  registerTeacher(model: TeacherRegister): Observable<any> {
+  public registerTeacher(model: TeacherRegister): Observable<any> {
     return this.httpClient.post(this.baseUrl + '/public/register/teacher', model);
   }
 
-  registerStudent(model: StudentRegister): Observable<any> {
+  public registerStudent(model: StudentRegister): Observable<any> {
     return this.httpClient.post(this.baseUrl + '/public/register/student', model);
+  }
+
+  public getAll(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.baseUrl + '/admin/all/users');
+  }
+
+  public getRole(user: User): string {
+    if (user.authorities.length === 1) {
+      return 'Student';
+    } else if (user.authorities.length === 2) {
+      return 'Teacher';
+    } else {
+      return 'Admin';
+    }
   }
 }
