@@ -27,7 +27,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="" *ngFor="let student of (course.students | studentsFilter: searchValue)">
+        <tr class="" *ngFor="let student of (students | studentsFilter: searchValue)">
           <td class="pointer" [routerLink]="'/profile/student/' + student.studentId">{{ student.studentName }}</td>
           <td *ngIf="userService.getRoles().includes('ROLE_TEACHER')">{{(student.gradeValue | grade) || 'None'}}
             <span class="plus  ml-2" (click)="openAddGradeDialog(student.studentId)">

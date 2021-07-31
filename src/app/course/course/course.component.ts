@@ -8,6 +8,7 @@ import {GradeService} from "../../_services/grade.service";
 import {AddTeacherComponent} from "../add-teacher/add-teacher.component";
 import {AddStudentComponent} from "../add-student/add-student.component";
 import {AddGradeComponent} from "../add-grade/add-grade.component";
+import {StudentWithAverageGrade} from "../../_models/StudentWithAverageGrade";
 
 @Component({
   selector: 'app-course',
@@ -17,6 +18,7 @@ import {AddGradeComponent} from "../add-grade/add-grade.component";
 export class CourseComponent implements OnInit {
   public course!: Course;
   public searchValue: string = '';
+  public students: StudentWithAverageGrade[] = [];
 
   constructor(public matDialog: MatDialog, private route: ActivatedRoute, private courseService: CourseService, public userService: UserService, private gradeService: GradeService) {
   }
@@ -28,7 +30,10 @@ export class CourseComponent implements OnInit {
   private loadCourse(): void {
     const courseName = this.route.snapshot.paramMap.get('name') || '';
     this.courseService.getByName(courseName)
-      .subscribe(course => this.course = course);
+      .subscribe(course => {
+        this.course = course;
+        this.students = this.course.students.sort((f, s) => f.studentName.localeCompare(s.studentName));
+      });
   }
 
   public openAddTeacherDialog(): void {

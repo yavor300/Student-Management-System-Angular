@@ -16,7 +16,7 @@
       <td>{{ course.name }}</td>
       <td>{{ course.totalHours }}</td>
       <td *ngIf="userService.getRoles().includes('ROLE_TEACHER')">
-        {{ course.averageGrade ?  course.averageGrade : 'None' }}
+        {{ course.averageGrade ?  course.averageGrade.toFixed(2) : 'None' }}
       </td>
     </tr>
     </tbody>
