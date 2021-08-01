@@ -3,7 +3,6 @@ import {Observable} from "rxjs";
 import {Course} from "../_models/Course";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -14,28 +13,19 @@ export class CourseService {
   constructor(private httpClient: HttpClient) { }
 
   public getAllForLoggedInTeacher(): Observable<Course[]> {
-    return this.httpClient.get<Course[]>(this.baseUrl + '/teacher/courses/all').pipe(
-      map((response: Course[]) => {
-        return response;
-      })
-    );
+    return this.httpClient.get<Course[]>(this.baseUrl + '/teacher/courses/all');
   }
 
   public getAllSorted(): Observable<Course[]> {
-    return this.httpClient.get<Course[]>(this.baseUrl + '/course/all/ordered')
-      .pipe(
-        map((response: Course[]) => {
-          return response;
-        })
-      );
+    return this.httpClient.get<Course[]>(this.baseUrl + '/course/all/ordered');
   }
 
   public getAll(): Observable<Course[]> {
     return this.httpClient.get<Course[]>(this.baseUrl + '/course/all');
   }
 
-  public getByName(name: string): Observable<Course> {
-    return this.httpClient.get<Course>(this.baseUrl + '/course/average/' + name);
+  public getById(id: string): Observable<Course> {
+    return this.httpClient.get<Course>(this.baseUrl + '/course/average/' + id);
   }
 
   public assignTeacherToCourse(courseName:string, teacherId: number) {

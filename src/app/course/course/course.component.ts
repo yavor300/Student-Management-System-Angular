@@ -28,8 +28,8 @@ export class CourseComponent implements OnInit {
   }
 
   private loadCourse(): void {
-    const courseName = this.route.snapshot.paramMap.get('name') || '';
-    this.courseService.getByName(courseName)
+    const id = this.route.snapshot.paramMap.get('id') || '';
+    this.courseService.getById(id)
       .subscribe(course => {
         this.course = course;
         this.students = this.course.students.sort((f, s) => f.studentName.localeCompare(s.studentName));

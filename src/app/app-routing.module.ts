@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent, canActivate: [AnonymousGuard]},
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [RoleGuard], data: {role: 'ROLE_STUDENT'} },
-  { path: 'courses/:name', component: CourseComponent, canActivate: [RoleGuard], data: {role: 'ROLE_STUDENT'} },
+  { path: 'courses/:id', component: CourseComponent, canActivate: [RoleGuard], data: {role: 'ROLE_STUDENT'} },
   { path: 'admin', component: AdminComponent, canActivate: [RoleGuard], data: {role: 'ROLE_ADMIN'} },
   { path: 'profile/student/:id', component: StudentProfileComponent, canActivate: [RoleGuard], data: {role: 'ROLE_STUDENT'} },
   { path: 'profile', component: ProfileComponent, canActivate: [RoleGuard], data: {role: 'ROLE_STUDENT'} }

@@ -26,5 +26,4 @@ export class CoursesComponent implements OnInit {
       this.courses = courses;
     })
   }
-
 }

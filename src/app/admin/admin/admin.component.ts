@@ -6,6 +6,7 @@ import {UserService} from "../../_services/user.service";
 import {Role} from "../../_models/Role";
 import {RoleService} from "../../_services/role.service";
 import {CourseService} from "../../_services/course.service";
+import ignore from "ignore";
 
 @Component({
   selector: 'app-admin',
@@ -66,15 +67,20 @@ export class AdminComponent implements OnInit {
   public onSubmitButtonClicked(): void {
     if (this.changeRoleForm.valid) {
       this.validationErrors = '';
-
       this.userService.changeRole(this.changeRoleForm.controls['user'].value,
         this.changeRoleForm.controls['role'].value)
         .subscribe(user => {
           if (user) {
             this.message = "Role successfully changed.";
             this.userService.getAll().subscribe(users => this.users = users);
+
+            if (this.userService.getUsername() === this.changeRoleForm.controls['user'].value) {
+              this.userService.logout();
+              this.router.navigate(['/login']);
+            }
           }
         }, error => {
+          this.message = '';
           try {
             this.validationErrors = error.error.errors.join('\n')
           } catch (err) {
