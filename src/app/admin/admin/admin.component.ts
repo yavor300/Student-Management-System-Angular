@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../_models/User";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -18,7 +18,8 @@ export class AdminComponent implements OnInit {
   public message: string = '';
   public validationErrors: string = '';
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService, private roleService: RoleService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private userService: UserService, private roleService: RoleService) {
+  }
 
   ngOnInit(): void {
     this.changeRoleForm = this.generateChangeRoleForm();
@@ -43,6 +44,8 @@ export class AdminComponent implements OnInit {
 
   public onSubmitButtonClicked(): void {
     if (this.changeRoleForm.valid) {
+      this.validationErrors = 's';
+
       this.userService.changeRole(this.changeRoleForm.controls['user'].value,
         this.changeRoleForm.controls['role'].value)
         .subscribe(user => {
@@ -50,7 +53,13 @@ export class AdminComponent implements OnInit {
             this.message = "Role successfully changed.";
             this.userService.getAll().subscribe(users => this.users = users);
           }
-        }, error => this.validationErrors = error.error.errors.join('\n'));
+        }, error => {
+          try {
+            this.validationErrors = error.error.errors.join('\n')
+          } catch (err) {
+            this.validationErrors = 'You do not have permissions!';
+          }
+        });
     }
   }
 
