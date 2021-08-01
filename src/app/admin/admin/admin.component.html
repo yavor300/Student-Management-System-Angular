@@ -40,4 +40,51 @@
       {{ validationErrors }}
     </span>
   </div>
+
+  <form
+    [formGroup]="addCourseForm"
+    (ngSubmit)="addCourse()"
+    class="text-center"
+  >
+    <mat-form-field class="mb-2 w-75 mx-auto">
+      <mat-label for="name">Course name</mat-label>
+        <input
+          matInput
+          formControlName="course"
+          name="name"
+          type="text"
+          required
+        />
+      <mat-error *ngIf="changeRoleForm.hasError('required', 'user')">
+        Course name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mb-2 w-75 mx-auto">
+      <mat-label for="totalHours">Total hours</mat-label>
+      <input
+        matInput
+        formControlName="hours"
+        name="totalHours"
+        type="number"
+        step="0.1"
+        min="1"
+        required
+      />
+      <mat-error *ngIf="changeRoleForm.hasError('required', 'user')">
+        Total hours are <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button class="btn btn-primary text-center mt-3" type="submit">Add course</button>
+  </form>
+  <div class="row mt-3 alert alert-info" *ngIf="messageAddCourse">
+    <span class="text-info">
+      {{ messageAddCourse }}
+    </span>
+  </div>
+  <div class="row mt-3 alert alert-danger" *ngIf="validationErrorsAddCourse">
+    <span class="text-danger">
+      {{ validationErrorsAddCourse }}
+    </span>
+  </div>
 </div>

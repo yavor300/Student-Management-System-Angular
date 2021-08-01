@@ -50,5 +50,7 @@ export class CourseService {
     return this.httpClient.post(this.baseUrl + '/student/add/course', {studentId, courseName});
   }
 
-
+  public addCourse(name: string, totalHours: number) {
+    return this.httpClient.post(this.baseUrl + '/course/add', {name, totalHours});
+  }
 }

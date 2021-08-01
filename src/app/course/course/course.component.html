@@ -23,12 +23,14 @@
         <thead class="thead-dark">
         <tr>
           <th scope="col">Student</th>
+          <th scope="col">Grades</th>
           <th scope="col" *ngIf="userService.getRoles().includes('ROLE_TEACHER')">Average Grade</th>
         </tr>
         </thead>
         <tbody>
         <tr class="" *ngFor="let student of (students | studentsFilter: searchValue)">
           <td class="pointer" [routerLink]="'/profile/student/' + student.studentId">{{ student.studentName }}</td>
+          <td>{{student.gradesGradeValue.join(', ')}}</td>
           <td *ngIf="userService.getRoles().includes('ROLE_TEACHER')">{{(student.gradeValue | grade) || 'None'}}
             <span class="plus  ml-2" (click)="openAddGradeDialog(student.studentId)">
           <i class="fa fa-plus pointer fa-1-5x"></i>
