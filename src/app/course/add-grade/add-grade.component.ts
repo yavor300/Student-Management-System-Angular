@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Course} from "../../_models/Course";
-import {Student} from "../../_models/Student";
+import {Course} from "../../models/Course";
+import {Student} from "../../models/Student";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {StudentService} from "../../_services/student.service";
-import {GradeService} from "../../_services/grade.service";
+import {StudentService} from "../../services/student.service";
+import {GradeService} from "../../services/grade.service";
 
 @Component({
   selector: 'app-add-grade',

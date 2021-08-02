@@ -12,8 +12,6 @@ import { AddTeacherComponent } from './add-teacher/add-teacher.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { AddGradeComponent } from './add-grade/add-grade.component';
 
-
-
 @NgModule({
   declarations: [
     FilterComponent,
@@ -29,7 +27,7 @@ import { AddGradeComponent } from './add-grade/add-grade.component';
         RouterModule,
         FormsModule,
         StudentModule,
-        SharedModule
+        SharedModule,
     ],
   exports: [
     FilterComponent,

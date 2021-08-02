@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {UserLogin} from "../_models/UserLogin";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-import {TeacherRegister} from "../_models/TeacherRegister";
-import {StudentRegister} from "../_models/StudentRegister";
-import {User} from "../_models/User";
+import {UserLogin} from "../models/UserLogin";
+import {TeacherRegister} from "../models/TeacherRegister";
+import {StudentRegister} from "../models/StudentRegister";
+import {User} from "../models/User";
 
 @Injectable({
   providedIn: 'root'

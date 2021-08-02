@@ -10,7 +10,8 @@
       <mat-select formControlName="user" name="user" placeholder="Choose">
         <mat-option *ngFor="let user of users" value="{{ user.username }}">{{
           user.username
-          }} ({{getRole(user)}})</mat-option>
+          }} ({{getRole(user)}})
+        </mat-option>
       </mat-select>
       <mat-error *ngIf="changeRoleForm.hasError('required', 'user')">
         User is <strong>required</strong>
@@ -48,13 +49,13 @@
   >
     <mat-form-field class="mb-2 w-75 mx-auto">
       <mat-label for="name">Course name</mat-label>
-        <input
-          matInput
-          formControlName="course"
-          name="name"
-          type="text"
-          required
-        />
+      <input
+        matInput
+        formControlName="course"
+        name="name"
+        type="text"
+        required
+      />
       <mat-error *ngIf="changeRoleForm.hasError('required', 'user')">
         Course name is <strong>required</strong>
       </mat-error>

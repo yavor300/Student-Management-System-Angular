@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../_models/User";
+import {User} from "../../models/User";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {UserService} from "../../_services/user.service";
-import {Role} from "../../_models/Role";
-import {RoleService} from "../../_services/role.service";
-import {CourseService} from "../../_services/course.service";
-import ignore from "ignore";
+import {UserService} from "../../services/user.service";
+import {Role} from "../../models/Role";
+import {RoleService} from "../../services/role.service";
+import {CourseService} from "../../services/course.service";
 
 @Component({
   selector: 'app-admin',
@@ -101,7 +100,7 @@ export class AdminComponent implements OnInit {
       this.courseService.addCourse(this.addCourseForm.controls['course'].value,
         this.addCourseForm.controls['hours'].value)
         .subscribe(() => {
-            this.messageAddCourse = "Course added successfully.";
+          this.messageAddCourse = "Course added successfully.";
         }, error => {
           try {
             this.validationErrorsAddCourse = error.error.errors.join('\n')

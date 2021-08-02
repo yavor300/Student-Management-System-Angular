@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Course} from "../../_models/Course";
-import {Teacher} from "../../_models/Teacher";
+import {Course} from "../../models/Course";
+import {Teacher} from "../../models/Teacher";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TeacherService} from "../../_services/teacher.service";
-import {CourseService} from "../../_services/course.service";
+import {TeacherService} from "../../services/teacher.service";
+import {CourseService} from "../../services/course.service";
 
 @Component({
   selector: 'app-add-teacher',

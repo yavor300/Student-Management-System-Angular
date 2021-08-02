@@ -6,7 +6,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthModule} from "./auth/auth.module";
 import {AppRoutingModule} from "./app-routing.module";
 import {DashboardModule} from "./dashboard/dashboard.module";
-import {JwtInterceptor} from "./_interceptors/jwt.interceptor";
+import {JwtInterceptor} from "./interceptors/jwt.interceptor";
 import {StudentModule} from "./student/student.module";
 import {TeacherModule} from "./teacher/teacher.module";
 import {CourseModule} from "./course/course.module";

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
-import { Student } from '../../_models/Student';
-import { StudentService } from '../../_services/student.service';
-import { UserService } from '../../_services/user.service';
+import { Student } from '../../models/Student';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-student-profile',

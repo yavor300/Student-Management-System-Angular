@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GradeService} from "../../_services/grade.service";
+import {GradeService} from "../../services/grade.service";
 
 @Component({
   selector: 'app-average-grade',
