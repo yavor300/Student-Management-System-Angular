@@ -9,13 +9,15 @@ import {TeacherModule} from "../teacher/teacher.module";
 import {StudentModule} from "../student/student.module";
 import {CourseModule} from "../course/course.module";
 import { ProfileComponent } from './profile/profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     NavbarComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    NotFoundComponent
   ],
   exports: [
     NavbarComponent,
